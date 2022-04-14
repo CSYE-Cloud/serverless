@@ -29,15 +29,14 @@ jobs:
           java-version: "11"
       - name: Packaging code
         run: |
-          mvn -B package -DskipTests --file pom.xml 
           mvn package
           mkdir artifacts
           cp target/serverless-0.0.1-SNAPSHOT.jar artifacts
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.GHACTION_USER_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.GHACTION_USER_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Building AMI
         run: |
@@ -55,12 +54,12 @@ jobs:
       #    SOURCE_AMI: ${{ secrets.SOURCE_AMI }}
       #    SUBNET_ID: ${{ secrets.SUBNET_ID }}
       
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-east-1
 
       - name: Create CodeDeploy Deployment
         id: deploy
