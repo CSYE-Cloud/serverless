@@ -78,7 +78,11 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -93,6 +97,8 @@
         <artifactId>maven-shade-plugin</artifactId>
         <configuration>
           <createDependencyReducedPom>false</createDependencyReducedPom>
+          <shadedArtifactAttached>true</shadedArtifactAttached>
+					<shadedClassifierName>aws</shadedClassifierName>
         </configuration>
         <executions>
           <execution>
@@ -103,35 +109,17 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <configuration>
-                <mainClass>${spring.boot.mainClass}</mainClass>
-            </configuration>
-        </plugin>
         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>unpack</id>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>unpack</goal>
-                    </goals>
-                    <configuration>
-                        <artifactItems>
-                            <artifactItem>
-                                <groupId>${project.groupId}</groupId>
-                                <artifactId>${project.artifactId}</artifactId>
-                                <version>${project.version}</version>
-                            </artifactItem>
-                        </artifactItems>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot.experimental</groupId>
+			<artifactId>spring-boot-thin-layout</artifactId>
+			<version>2.6.6</version>
+		</dependency>
+	</dependencies>
+</plugin>
 		</plugins>
 	</build>
 
