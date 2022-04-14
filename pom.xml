@@ -17,7 +17,16 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-	
+			<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -48,45 +57,6 @@
             <version>1.11.756</version>
         </dependency>
 <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
-<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk</artifactId>
-    <version>1.12.172</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
-<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk-s3</artifactId>
-    <version>1.12.172</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/aws-sdk-java -->
-<dependency>
-    <groupId>software.amazon.awssdk</groupId>
-    <artifactId>aws-sdk-java</artifactId>
-    <version>2.17.167</version>
-    <scope>provided</scope>
-</dependency>
-			<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-sns</artifactId>
-			<version>1.12.119</version>
-		</dependency>
-<dependency>
-				<groupId>software.amazon.awssdk</groupId>
-				<artifactId>bom</artifactId>
-				<version>2.15.56</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
 
 	</dependencies>
 
@@ -109,30 +79,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-maven-plugin</artifactId>
-    <configuration>
-        <mainClass>com.cloud.serverless.Email</mainClass>
-    </configuration><executions>
-    <execution>
-            <goals>
-                <goal>repackage</goal>
-            </goals>
-        </execution>
-        </executions>
-        </plugin>
-        <plugin>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-maven-plugin</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot.experimental</groupId>
-			<artifactId>spring-boot-thin-layout</artifactId>
-			<version>2.6.6</version>
-		</dependency>
-	</dependencies>
-</plugin>
 		</plugins>
 	</build>
 
