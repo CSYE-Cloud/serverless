@@ -1,4 +1,4 @@
-package com.cloud.serverless;
+package com.cloud.serverless.email;
 
 import java.time.Instant;
 import java.util.Arrays;

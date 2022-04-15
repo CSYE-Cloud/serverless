@@ -11,7 +11,6 @@
 	<groupId>com.cloud</groupId>
 	<artifactId>serverless</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>serverless</name>
 	<description>serverless	project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -60,9 +59,20 @@
 
 	</dependencies>
 
+<dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>aws-java-sdk-bom</artifactId>
+        <version>1.11.750</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 	<build>
 		<plugins>
-			  <plugin>
+			  <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <configuration>
@@ -78,7 +88,14 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
+      <plugin>
+
+                <groupId>org.springframework.boot</groupId>
+
+                <artifactId>spring-boot-maven-plugin</artifactId>
+
+            </plugin>
 		</plugins>
 	</build>
 
