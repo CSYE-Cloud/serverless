@@ -8,10 +8,9 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cloud</groupId>
+	<groupId>com.cloud.serverless</groupId>
 	<artifactId>serverless</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>serverless</name>
 	<description>serverless	project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
