@@ -136,6 +136,7 @@ public class Email implements RequestHandler<SNSEvent, String> {
                 emailService.sendEmail(emailRequest);
                 context.getLogger().log("Sent email!");
                 System.out.println("email sent");
+                
             } catch (Exception ex) {
                 System.out.println("eroor in sending email");
                 context.getLogger().log(ex.getLocalizedMessage());
