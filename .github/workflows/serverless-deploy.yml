@@ -29,7 +29,7 @@ jobs:
           java-version: "11"
       - name: Packaging code
         run: |
-          mvn package
+          mvn -B package --file pom.xml
           mkdir artifacts
           cp target/serverless-0.0.1-SNAPSHOT.jar artifacts
       - name: Configure AWS credentials
@@ -38,7 +38,7 @@ jobs:
           aws-access-key-id: ${{ secrets.GHACTION_USER_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.GHACTION_USER_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Building AMI
+      - name: copying
         run: |
           aws s3 sync ./artifacts s3://codedeploy.garimachoudhary.me
           
