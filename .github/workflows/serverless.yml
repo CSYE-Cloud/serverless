@@ -1,0 +1,45 @@
+name: serverless s3
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    name: Moving files
+    steps:
+      # checks-out current repo so the job can access it
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Set sha_short
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      # setup java environment for execution
+      - name: Setup Java Environment
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      # run unit test using maven commands
+      - name: Build with Maven
+        run: |
+             mvn -B package --file pom.xml
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.GHACTION_USER_ACCESS_KEY}}
+          aws-secret-access-key: ${{secrets.GHACTION_USER_SECRET_ACCESS_KEY}}
+          aws-region: us-east-1
+
+      - name: sync s3
+        run: |
+          aws s3 sync ./target/ s3://codedeploy.garimachoudhary.me
+
+
+
+      - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          cd target
+          aws lambda update-function-code --function-name Email --zip-file fileb://serverless-1.0.0.jar
