@@ -79,7 +79,7 @@ public class Email implements RequestHandler<SNSEvent, String> {
         url.append(msgInfo.get(2));
         String userEmail = msgInfo.get(1);
         //create token
-        String linktoSendUser="http://demo.garimachoudhary.me/v1/verifyUserEmail?email="+userEmail+"&token="+msgInfo.get(2);
+        String linktoSendUser="https://demo.garimachoudhary.me/v1/verifyUserEmail?email="+userEmail+"&token="+msgInfo.get(2);
         //append to url
         //url.append(token);
         emailMsgSB.append("Hi, Username: ").append(userEmail).append("\n");
